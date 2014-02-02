@@ -8,7 +8,12 @@ window.ractiveBk = {
     Routers: {},
     init: function () {
         'use strict';
-        console.log('Hello from Backbone!');
+        var newTaskView = new ractiveBk.Views.NewTaskView({el: "#new-task"});
+        window.taskListView = new ractiveBk.Views.TasklistView({el: "#task-list", tmpl: "#task-list-template"});
+        newTaskView.on('ractiveBk:addNewTask', function(task){
+            window.taskListView.pushTask(task);
+        });
+
     }
 };
 
