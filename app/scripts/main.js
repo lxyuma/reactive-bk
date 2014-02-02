@@ -9,9 +9,9 @@ window.ractiveBk = {
     init: function () {
         'use strict';
         var newTaskView = new ractiveBk.Views.NewTaskView({el: "#new-task"});
-        window.taskListView = new ractiveBk.Views.TasklistView({el: "#task-list", tmpl: "#task-list-template"});
+        window.taskListView = new ractive.TaskListView({el: "#task-list"});
         newTaskView.on('ractiveBk:addNewTask', function(task){
-            window.taskListView.pushTask(task);
+            window.taskListView.get('taskList').push(task.attributes);
         });
 
     }
