@@ -30,7 +30,9 @@
             <script id="task-list-template" type="javascript/ractive">
                 <ul>
                 {{#taskList}}
-                    <li> {{name}} </li>
+                    <li on-click="onClickTaskItem:{{this}}" style="{{.finished ? 'text-decoration:line-through;' : ''}}">
+                        {{name}}
+                    </li>
                 {{/taskList}}
                 </ul>
             </script>
