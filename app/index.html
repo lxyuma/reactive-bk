@@ -23,8 +23,10 @@
         <![endif]-->
 
         <div id="new-task">
-            <input type="TEXT" id="input-task"></input>
-            <input type="submit" id="submit-task" ></input>
+            <script id="new-task-template" type="javascript/ractive">
+                <input type="TEXT" id="input-task" value="{{taskName}}">
+                <input on-click="onClickSubmit: {{taskName}}" type="submit" id="submit-task">
+            </script>
         </div>
         <div id="task-list">
             <script id="task-list-template" type="javascript/ractive">

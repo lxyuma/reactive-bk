@@ -1,22 +1,20 @@
-/*global ractiveBk, Backbone, JST*/
-
-ractiveBk.Views = ractiveBk.Views || {};
+var ractive = ractive || {};
 
 (function () {
     'use strict';
 
-    ractiveBk.Views.NewTaskView = Backbone.View.extend({
-
-        events: {
-            "click #submit-task": "onClickSubmit"
-        },
-        onClickSubmit: function(e){
-            var inputTask = this.$('#input-task');
-            var task = new ractiveBk.Models.TaskModel({name: inputTask.val() });
-            this.trigger('ractiveBk:addNewTask', task);
-            inputTask.val('');
+    ractive.NewTaskView = Ractive.extend({
+        template: "#new-task-template",
+        init: function(options){
+            this.set('taskName', '');
+            this.on({
+                onClickSubmit: function(e, taskName){
+                    var task = new ractiveBk.Models.TaskModel({name: taskName });
+                    ractiveBk.Communicator.trigger('ractiveBk:addNewTask', task);
+                    this.set('taskName', '');
+                }
+            });
         }
-
     });
 
 })();

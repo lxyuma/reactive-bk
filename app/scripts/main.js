@@ -6,11 +6,12 @@ window.ractiveBk = {
     Collections: {},
     Views: {},
     Routers: {},
+    Communicator: _.extend({}, Backbone.Events),
     init: function () {
         'use strict';
-        var newTaskView = new ractiveBk.Views.NewTaskView({el: "#new-task"});
+        var newTaskView = new ractive.NewTaskView({el: "#new-task"});
         window.taskListView = new ractive.TaskListView({el: "#task-list"});
-        newTaskView.on('ractiveBk:addNewTask', function(task){
+        ractiveBk.Communicator.on('ractiveBk:addNewTask', function(task){
             window.taskListView.pushNewTask(task);
         });
     }
