@@ -11,9 +11,8 @@ window.ractiveBk = {
         var newTaskView = new ractiveBk.Views.NewTaskView({el: "#new-task"});
         window.taskListView = new ractive.TaskListView({el: "#task-list"});
         newTaskView.on('ractiveBk:addNewTask', function(task){
-            window.taskListView.get('taskList').push(task.attributes);
+            window.taskListView.pushNewTask(task);
         });
-
     }
 };
 

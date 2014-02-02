@@ -13,6 +13,9 @@ var ractive = ractive || {};
                     this.update("taskList");
                 }
             });
+        },
+        pushNewTask: function(task){
+            this.get('taskList').push(task.attributes);
         }
     });
 })();
